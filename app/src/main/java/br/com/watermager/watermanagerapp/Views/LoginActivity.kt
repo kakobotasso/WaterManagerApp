@@ -1,4 +1,4 @@
-package br.com.watermager.watermanagerapp
+package br.com.watermager.watermanagerapp.Views
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.View
 import br.com.watermager.watermanagerapp.API.Services.VersionService
 import br.com.watermager.watermanagerapp.Models.Version
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import br.com.watermager.watermanagerapp.R
 
 class LoginActivity : AppCompatActivity() {
 
@@ -19,9 +17,16 @@ class LoginActivity : AppCompatActivity() {
         val versionService = VersionService()
         versionService.checkVersion({ response ->
             val version = response.body() as Version
-            println("----------------------------------------------------------")
-            println(version.version)
-            println("----------------------------------------------------------")
+            val minVersion = version.version.replace(".", "").toInt()
+
+            val packageInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0)
+
+            if (minVersion > packageInfo.versionCode){
+                val versionExpired = Intent(this, VersionExpiredActivity::class.java)
+                startActivity(versionExpired)
+                finish()
+            }
+
         }, { t ->
             println(t.message)
         })

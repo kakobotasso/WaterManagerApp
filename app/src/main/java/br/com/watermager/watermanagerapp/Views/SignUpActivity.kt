@@ -1,9 +1,10 @@
-package br.com.watermager.watermanagerapp
+package br.com.watermager.watermanagerapp.Views
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import br.com.watermager.watermanagerapp.R
 
 class SignUpActivity : AppCompatActivity() {
 

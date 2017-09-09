@@ -1,4 +1,4 @@
-package br.com.watermager.watermanagerapp
+package br.com.watermager.watermanagerapp.Views
 
 import android.app.Fragment
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ProgressBar
+import br.com.watermager.watermanagerapp.R
+import br.com.watermager.watermanagerapp.Views.Fragments.BillFragment
+import br.com.watermager.watermanagerapp.Views.Fragments.ConsumptionFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.watermager.watermanagerapp.LoginActivity">
+    tools:context="br.com.watermager.watermanagerapp.Views.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,12 +11,12 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:layout_gravity="center"
             android:layout_marginBottom="26dp"
             android:layout_marginTop="26dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/logo_water_manager" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -18,4 +18,8 @@
     <!-- Bottom Navigation Menu -->
     <string name="consumption_menu">Consumo</string>
     <string name="bill_menu">Conta</string>
+
+    <!-- Version Expired -->
+    <string name="expired_version">A sua versão do aplicativo está desatualizada. \n \n Baixe a atualização na loja para continuar utilizando</string>
+    <string name="bt_playstore_expired">Ir para loja</string>
 </resources>
