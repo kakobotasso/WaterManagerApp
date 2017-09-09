@@ -10,4 +10,12 @@
     <string name="bt_login">Entrar</string>
     <string name="not_registered_yer_login">Ainda não sou cadastrado</string>
 
+    <!-- Sign Up -->
+    <string name="lbl_name_signup">Nome</string>
+    <string name="lbl_email_signup">Email</string>
+    <string name="lbl_cpf_signup">CPF</string>
+    <string name="lbl_user_signup">Usuário</string>
+    <string name="lbl_password_signup">Usuário</string>
+    <string name="register_signup">Cadastrar</string>
+
 </resources>
