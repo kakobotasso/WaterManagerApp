@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">WaterManagerApp</string>
+    <string name="app_name">Water Manager</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- Login -->
+    <string name="lbl_user_login">Usuário</string>
+    <string name="lbl_password_login">Senha</string>
+    <string name="bt_login">Entrar</string>
+    <string name="not_registered_yer_login">Ainda não sou cadastrado</string>
+
 </resources>
