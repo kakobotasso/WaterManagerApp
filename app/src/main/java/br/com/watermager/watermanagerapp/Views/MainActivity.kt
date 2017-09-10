@@ -47,18 +47,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadConsumptionFragment() {
         showProgressBar()
-        consumptionFragment = Fragment.instantiate(this@MainActivity,
-                ConsumptionFragment::class.java!!.getName()) as ConsumptionFragment
-
+        consumptionFragment = ConsumptionFragment()
         fragmentManager.beginTransaction().replace(R.id.content, consumptionFragment).commit()
         hideProgressBar()
     }
 
     private fun loadBillFragment() {
         showProgressBar()
-        billFragment = Fragment.instantiate(this@MainActivity,
-                BillFragment::class.java!!.getName()) as BillFragment
-
+        billFragment = BillFragment()
         fragmentManager.beginTransaction().replace(R.id.content, billFragment).commit()
         hideProgressBar()
     }

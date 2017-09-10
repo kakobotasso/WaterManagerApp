@@ -25,4 +25,10 @@
     <!-- Version Expired -->
     <string name="expired_version">A sua versão do aplicativo está desatualizada. \n \n Baixe a atualização na loja para continuar utilizando</string>
     <string name="bt_playstore_expired">Ir para loja</string>
+
+    <!-- Consumption Fragment -->
+    <string name="expectation_consumption">Estimativa Outubro: 2 litros</string>
+
+    <!-- Bill Fragment -->
+    <string name="expectation_bill">Estimativa Outubro: R$ 20</string>
 </resources>
