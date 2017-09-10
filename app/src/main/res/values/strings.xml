@@ -6,6 +6,9 @@
     <string name="lbl_password_login">Senha</string>
     <string name="bt_login">Entrar</string>
     <string name="not_registered_yer_login">Ainda não sou cadastrado</string>
+    <string name="username_blank_login">Usuário não pode ficar em branco</string>
+    <string name="password_blank_login">Senha não pode ficar em branco</string>
+    <string name="login_failed">Usuário ou senha incorretos. Tente novamente</string>
 
     <!-- Sign Up -->
     <string name="lbl_name_signup">Nome</string>

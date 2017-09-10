@@ -52,6 +52,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
+                android:id="@+id/bt_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36dp"
@@ -63,12 +64,19 @@
 
 
         <TextView
+            android:id="@+id/tv_not_yet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="26dp"
             android:gravity="center"
             android:onClick="notYetRegistered"
             android:text="@string/not_registered_yer_login" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
