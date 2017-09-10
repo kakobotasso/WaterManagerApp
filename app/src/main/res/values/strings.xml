@@ -17,6 +17,12 @@
     <string name="lbl_user_signup">Usuário</string>
     <string name="lbl_password_signup">Usuário</string>
     <string name="register_signup">Cadastrar</string>
+    <string name="name_blank_signup">Nome não pode ficar em branco</string>
+    <string name="email_blank_signup">Email não pode ficar em branco</string>
+    <string name="cpf_blank_signup">CPF não pode ficar em branco</string>
+    <string name="username_blank_signup">Usuário não pode ficar em branco</string>
+    <string name="password_blank_signup">Senha não pode ficar em branco</string>
+    <string name="signup_failed">Não foi possivel realizar o cadastro. Tente novamente</string>
 
     <!-- Bottom Navigation Menu -->
     <string name="consumption_menu">Consumo</string>
