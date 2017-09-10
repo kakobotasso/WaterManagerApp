@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#005662</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="colorAccent">#00BFA5</color>
+    <color name="splashScreenBackground">#E0F2F1</color>
 </resources>
