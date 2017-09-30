@@ -8,6 +8,7 @@ import br.com.watermager.watermanagerapp.API.Services.VersionService
 import br.com.watermager.watermanagerapp.Models.Version
 
 import br.com.watermager.watermanagerapp.R
+import br.com.watermager.watermanagerapp.Utils.UserShared
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -31,9 +32,19 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(versionExpired)
                 finish()
             } else {
-                val login = Intent(this, LoginActivity::class.java)
-                startActivity(login)
-                finish()
+                val userShared = UserShared(this)
+                val user = userShared.readUser()
+
+                if( user.token.isEmpty() || user.serial.isEmpty() ) {
+                    val login = Intent(this, LoginActivity::class.java)
+                    startActivity(login)
+                    finish()
+                } else {
+                    val main = Intent(this, MainActivity::class.java)
+                    startActivity(main)
+                    finish()
+                }
+
             }
 
         }, { t ->
