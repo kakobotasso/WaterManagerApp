@@ -8,4 +8,5 @@ class User {
     lateinit var username: String
     lateinit var password: String
     lateinit var token: String
+    lateinit var serial: String
 }

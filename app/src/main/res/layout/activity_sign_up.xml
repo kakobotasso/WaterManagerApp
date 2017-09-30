@@ -46,8 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/lbl_email_signup" />
+                    android:hint="@string/lbl_email_signup"
+                    android:inputType="textEmailAddress" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -60,8 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:inputType="number"
-                    android:hint="@string/lbl_cpf_signup" />
+                    android:hint="@string/lbl_cpf_signup"
+                    android:inputType="number" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -89,6 +89,19 @@
                     android:layout_marginBottom="16dp"
                     android:hint="@string/lbl_password_signup"
                     android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_serial_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/lbl_serial_signup" />
 
             </android.support.design.widget.TextInputLayout>
 

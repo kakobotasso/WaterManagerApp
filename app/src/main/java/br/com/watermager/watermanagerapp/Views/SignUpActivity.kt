@@ -19,6 +19,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var etCpf: EditText
     lateinit var etUser: EditText
     lateinit var etPassword: EditText
+    lateinit var etSerial: EditText
     lateinit var btSignup: Button
     lateinit var progressBar: ProgressBar
     lateinit var name: String
@@ -26,6 +27,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var cpf: String
     lateinit var username: String
     lateinit var password: String
+    lateinit var serial: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,7 @@ class SignUpActivity : AppCompatActivity() {
             user.cpf = cpf
             user.username = username
             user.password = password
+            user.serial = serial
 
             val service = UserService()
             service.signUpUser(user, { response ->
@@ -72,6 +75,7 @@ class SignUpActivity : AppCompatActivity() {
         etCpf = findViewById(R.id.et_cpf_signup) as EditText
         etUser = findViewById(R.id.et_user_signup) as EditText
         etPassword = findViewById(R.id.et_password_signup) as EditText
+        etSerial = findViewById(R.id.et_serial_signup) as EditText
         btSignup = findViewById(R.id.bt_signup) as Button
         progressBar = findViewById(R.id.progress_bar) as ProgressBar
         progressBar.visibility = View.GONE
@@ -93,6 +97,7 @@ class SignUpActivity : AppCompatActivity() {
         cpf = etCpf.text.toString()
         username = etUser.text.toString()
         password = etPassword.text.toString()
+        serial = etSerial.text.toString()
     }
 
     private fun validFields(): Boolean {
@@ -117,6 +122,10 @@ class SignUpActivity : AppCompatActivity() {
         if (password.isEmpty()) {
             valid = false
             etPassword.error = getString(R.string.password_blank_signup)
+        }
+        if (serial.isEmpty()) {
+            valid = false
+            etSerial.error = getString(R.string.serial_blank_signup)
         }
 
         return valid
