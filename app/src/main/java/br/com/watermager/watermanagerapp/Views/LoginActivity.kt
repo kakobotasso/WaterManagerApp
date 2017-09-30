@@ -10,7 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import br.com.watermager.watermanagerapp.API.Services.LoginService
 import br.com.watermager.watermanagerapp.Models.Login
+import br.com.watermager.watermanagerapp.Models.User
 import br.com.watermager.watermanagerapp.R
+import br.com.watermager.watermanagerapp.Utils.UserShared
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var progressBar: ProgressBar
     lateinit var username: String
     lateinit var password: String
+    lateinit var userShared: UserShared
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +62,8 @@ class LoginActivity : AppCompatActivity() {
         tvNotYet = findViewById(R.id.tv_not_yet) as TextView
         progressBar = findViewById(R.id.progress_bar) as ProgressBar
         progressBar.visibility = View.GONE
+
+        userShared = UserShared(this)
     }
 
     private fun validateFields(): Boolean {
@@ -90,6 +95,9 @@ class LoginActivity : AppCompatActivity() {
 
         loginService.loginUser(login, { response ->
             if( response.isSuccessful ){
+                val user = response.body() as User
+                userShared.addTokenAndSerial(user.token, user.serial)
+
                 val mainActivity = Intent(this, MainActivity::class.java)
                 startActivity(mainActivity)
                 finish()

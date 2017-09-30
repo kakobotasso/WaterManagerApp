@@ -1,5 +1,6 @@
 package br.com.watermager.watermanagerapp.Views.Fragments
 
+import android.app.Activity
 import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,26 +11,34 @@ import android.widget.ListView
 import br.com.watermager.watermanagerapp.API.Services.ConsumptionService
 import br.com.watermager.watermanagerapp.Models.Consumption
 import br.com.watermager.watermanagerapp.R
+import br.com.watermager.watermanagerapp.Utils.UserShared
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 
-class BillFragment : Fragment() {
+class BillFragment() : Fragment() {
     lateinit var chart: BarChart
     lateinit var listView: ListView
     lateinit var consumptionList: List<Consumption>
+    lateinit var userShared: UserShared
+
+    constructor(userShared: UserShared) : this() {
+        this.userShared = userShared
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_bill, container, false)
 
+        val user = userShared.readUser()
+
         chart = view.findViewById(R.id.chart) as BarChart
         listView = view.findViewById(R.id.list_view) as ListView
 
         val service = ConsumptionService()
-        service.getConsumptionList("money", {
+        service.getConsumptionList(user.serial, "money", {
             response ->
             if(response.isSuccessful){
                 consumptionList = response.body()!!

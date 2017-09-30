@@ -4,6 +4,8 @@ class Consumption {
     lateinit var id: Integer
     lateinit var liter: String
     lateinit var month: String
+    lateinit var year: String
+    lateinit var serial: String
 
     override fun toString(): String {
         if (liter.contains("R$"))
@@ -14,9 +16,7 @@ class Consumption {
     }
 
     private fun convertMonth(): String {
-        val splitMonth = month.split("/")
-        val monthNumber = splitMonth[0].toInt()
-        val year = splitMonth[1]
+        val monthNumber = month.toInt()
 
         when (monthNumber) {
             1 -> return "Jan/$year"

@@ -23,6 +23,11 @@ interface WaterManagerInterface {
     @GET("/v1/user/{id}")
     fun getUserInfo(@Path("id") id: String): Call<User>
 
-    @GET("/v1/consumption/{consumption_type}")
-    fun getConsumption(@Path("consumption_type") type: String): Call<List<Consumption>>
+    @GET("/v1/consumption/monthly/{serial}/{consumption_type}")
+    fun getConsumption(@Path("serial") serial: String,
+                       @Path("consumption_type") type: String): Call<List<Consumption>>
+
+    @GET("/v1/consumption/estimated/{serial}/{consumption_type}")
+    fun getEstimatedConsumption(@Path("serial") serial: String,
+                                @Path("consumption_type") type: String): Call<Consumption>
 }

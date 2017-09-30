@@ -8,9 +8,17 @@ import retrofit2.Response
 class ConsumptionService : CustomRetrofitResponse(){
     val service = RetrofitConfiguration.getService()
 
-    fun getConsumptionList(type: String,
+    fun getConsumptionList(serial: String,
+                           type: String,
                            success: (response: Response<List<Consumption>>) -> Unit,
                            failure: (t: Throwable) -> Unit) {
-        service.getConsumption(type).enqueue(success, failure)
+        service.getConsumption(serial, type).enqueue(success, failure)
+    }
+
+    fun getEstimatedConsumption(serial: String,
+                                type: String,
+                                success: (response: Response<Consumption>) -> Unit,
+                                failure: (t: Throwable) -> Unit) {
+        service.getEstimatedConsumption(serial, type).enqueue(success, failure)
     }
 }

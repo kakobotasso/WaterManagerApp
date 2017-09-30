@@ -11,6 +11,7 @@ import android.widget.Toast
 import br.com.watermager.watermanagerapp.API.Services.UserService
 import br.com.watermager.watermanagerapp.Models.User
 import br.com.watermager.watermanagerapp.R
+import br.com.watermager.watermanagerapp.Utils.UserShared
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -28,6 +29,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var username: String
     lateinit var password: String
     lateinit var serial: String
+    lateinit var userShared: UserShared
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +54,9 @@ class SignUpActivity : AppCompatActivity() {
             val service = UserService()
             service.signUpUser(user, { response ->
                 if (response.isSuccessful) {
+                    val user = response.body() as User
+                    userShared.addTokenAndSerial(user.token, serial)
+
                     val mainActivity = Intent(this, MainActivity::class.java)
                     startActivity(mainActivity)
                     finish()
@@ -79,6 +84,8 @@ class SignUpActivity : AppCompatActivity() {
         btSignup = findViewById(R.id.bt_signup) as Button
         progressBar = findViewById(R.id.progress_bar) as ProgressBar
         progressBar.visibility = View.GONE
+
+        userShared = UserShared(this)
     }
 
     private fun showProgressBar() {
