@@ -1,9 +1,6 @@
 package br.com.watermager.watermanagerapp.API.Interfaces
 
-import br.com.watermager.watermanagerapp.Models.Consumption
-import br.com.watermager.watermanagerapp.Models.Login
-import br.com.watermager.watermanagerapp.Models.User
-import br.com.watermager.watermanagerapp.Models.Version
+import br.com.watermager.watermanagerapp.Models.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -30,4 +27,8 @@ interface WaterManagerInterface {
     @GET("/v1/consumption/estimated/{serial}/{consumption_type}")
     fun getEstimatedConsumption(@Path("serial") serial: String,
                                 @Path("consumption_type") type: String): Call<Consumption>
+
+    @GET("/v1/consumption/monthly/estimated/{serial}/{consumption_type}")
+    fun getEstimatedAndMonthlyConsumption(@Path("serial") serial: String,
+                                          @Path("consumption_type") type: String): Call<ConsumptionResult>
 }

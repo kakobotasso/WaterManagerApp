@@ -2,14 +2,17 @@ package br.com.watermager.watermanagerapp.Views.Fragments
 
 import android.app.Activity
 import android.app.Fragment
+import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import br.com.watermager.watermanagerapp.API.Services.ConsumptionService
 import br.com.watermager.watermanagerapp.Models.Consumption
+import br.com.watermager.watermanagerapp.Models.User
 import br.com.watermager.watermanagerapp.R
 import br.com.watermager.watermanagerapp.Utils.UserShared
 import com.github.mikephil.charting.charts.BarChart
@@ -21,8 +24,11 @@ import com.github.mikephil.charting.data.BarEntry
 class BillFragment() : Fragment() {
     lateinit var chart: BarChart
     lateinit var listView: ListView
+    lateinit var tvEstimated: TextView
     lateinit var consumptionList: List<Consumption>
+    lateinit var estimatedList: List<Consumption>
     lateinit var userShared: UserShared
+    lateinit var service: ConsumptionService
 
     constructor(userShared: UserShared) : this() {
         this.userShared = userShared
@@ -34,34 +40,34 @@ class BillFragment() : Fragment() {
 
         val user = userShared.readUser()
 
+        tvEstimated = view.findViewById(R.id.tv_estimated) as TextView
         chart = view.findViewById(R.id.chart) as BarChart
         listView = view.findViewById(R.id.list_view) as ListView
 
-        val service = ConsumptionService()
-        service.getConsumptionList(user.serial, "money", {
-            response ->
-            if(response.isSuccessful){
-                consumptionList = response.body()!!
+        service = ConsumptionService()
+        service.getEstimatedMonthlyConsumption(user.serial, "money", { response ->
+            if (response.isSuccessful) {
+                val consumptionResult = response.body()!!
+                consumptionList = consumptionResult.consumptionList
+                estimatedList = consumptionResult.estimated
                 prepareChart()
                 prepareListView()
+                prepareEstimated()
             }
-
-
-        }, {
-            t ->
+        }, { t ->
             println(t.message)
         })
 
         return view
     }
 
-    private fun prepareChart(){
+    private fun prepareChart() {
         var entries = ArrayList<BarEntry>()
 
-        for( consumption in consumptionList ) {
+        for (consumption in consumptionList) {
             val xValue = consumption.month.split("/")[0].toFloat()
             val yValue = consumption.liter.replace("R$", "").replace(",", ".").trim().toFloat()
-            entries.add( BarEntry(xValue, yValue) )
+            entries.add(BarEntry(xValue, yValue))
         }
 
         val dataSet = BarDataSet(entries, "R$")
@@ -88,10 +94,16 @@ class BillFragment() : Fragment() {
         chart.invalidate()
     }
 
-    private fun prepareListView(){
+    private fun prepareListView() {
         val adapter = ArrayAdapter<Consumption>(
                 activity, android.R.layout.simple_list_item_1, toArray<Consumption>(consumptionList))
         listView.adapter = adapter
+    }
+
+    private fun prepareEstimated() {
+        val consumption = estimatedList.get(0);
+
+        tvEstimated.text = "${tvEstimated.text} ${consumption.liter}"
     }
 
     inline fun <reified T> toArray(list: List<*>): Array<T> {

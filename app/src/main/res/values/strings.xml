@@ -35,8 +35,8 @@
     <string name="bt_playstore_expired">Ir para loja</string>
 
     <!-- Consumption Fragment -->
-    <string name="expectation_consumption">Estimativa Outubro: 2 litros</string>
+    <string name="expectation_consumption">Estimativa mês seguinte:</string>
 
     <!-- Bill Fragment -->
-    <string name="expectation_bill">Estimativa Outubro: R$ 20</string>
+    <string name="expectation_bill">Estimativa mês seguinte:</string>
 </resources>

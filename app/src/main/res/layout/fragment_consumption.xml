@@ -11,15 +11,15 @@
 
 
     <TextView
+        android:id="@+id/tv_estimated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/expectation_consumption"
-        android:textSize="20sp"
-        android:background="@color/splashScreenBackground"
         android:layout_margin="15dp"
+        android:background="@color/splashScreenBackground"
+        android:gravity="center"
         android:padding="5dp"
-        />
+        android:text="@string/expectation_consumption"
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/list_view"
