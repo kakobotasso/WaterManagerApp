@@ -2,6 +2,7 @@ package br.com.watermager.watermanagerapp.Views.Fragments
 
 import android.app.Activity
 import android.app.Fragment
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +11,13 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import br.com.watermager.watermanagerapp.API.Services.ConsumptionService
 import br.com.watermager.watermanagerapp.Models.Consumption
 import br.com.watermager.watermanagerapp.Models.User
 import br.com.watermager.watermanagerapp.R
 import br.com.watermager.watermanagerapp.Utils.UserShared
+import br.com.watermager.watermanagerapp.Views.EmptyConsumptionActivity
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.BarData
@@ -47,12 +50,18 @@ class BillFragment() : Fragment() {
         service = ConsumptionService()
         service.getEstimatedMonthlyConsumption(user.serial, "money", { response ->
             if (response.isSuccessful) {
-                val consumptionResult = response.body()!!
-                consumptionList = consumptionResult.consumptionList
-                estimatedList = consumptionResult.estimated
-                prepareChart()
-                prepareListView()
-                prepareEstimated()
+                try {
+                    val consumptionResult = response.body()!!
+                    consumptionList = consumptionResult.consumptionList
+                    estimatedList = consumptionResult.estimated
+                    prepareChart()
+                    prepareListView()
+                    prepareEstimated()
+                } catch (e: Exception) {
+                    val emptyConsumptionActtivity = Intent(view.context, EmptyConsumptionActivity::class.java)
+                    startActivity(emptyConsumptionActtivity)
+                }
+
             }
         }, { t ->
             println(t.message)

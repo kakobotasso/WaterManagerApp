@@ -39,4 +39,7 @@
 
     <!-- Bill Fragment -->
     <string name="expectation_bill">Estimativa mês seguinte:</string>
+
+    <!-- EmptyConsumption Activity -->
+    <string name="empty_consumption">Nenhum consumo cadastrado até o momento :( \n \n Tente novamente mais tarde</string>
 </resources>
